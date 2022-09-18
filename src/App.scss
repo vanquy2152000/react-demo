@@ -7,15 +7,76 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (min-width: 1400px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1400px !important;
+  }
+}
+
 .app-container {
   .header-container {
+    .btn-login {
+      height: 40px;
+      border-radius: 5px;
+      margin-right: 15px;
+      padding: 0 15px;
+      border: 1px solid #464343;
+      &:hover {
+        color: #808080;
+      }
+    }
+
+    .btn-signup {
+      height: 40px;
+      border-radius: 5px;
+      padding: 0 15px;
+      background: #313131;
+      color: white;
+      &:hover {
+        background: black;
+      }
+    }
+
     .navbar {
+      padding-top: 20px;
       z-index: 10;
-      opacity: 0.6;
-      .navbar-nav {
-        .nav-link {
-          &.active {
-            color: #00bbff;
+      background-color: rgba(0, 0, 0, 0) !important;
+      .nav-link {
+        &.active {
+          color: #00bbff;
+        }
+      }
+    }
+  }
+  .homepage-container {
+    .homepage-content {
+      position: relative;
+      padding: 100px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .title-1 {
+        font-size: 40px;
+        font-weight: 600;
+      }
+      .title-2 {
+        font-size: 25px;
+      }
+      .title-3 {
+        .btn-getstart {
+          height: 40px;
+          border-radius: 5px;
+          padding: 0 15px;
+          background: #313131;
+          color: white;
+          &:hover {
+            background: black;
           }
         }
       }
