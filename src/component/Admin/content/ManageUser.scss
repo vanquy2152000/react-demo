@@ -9,6 +9,12 @@
         font-weight: 600;
         font-size: 25px;
     }
+    .table-user-container {
+        .user-pagination {
+            display: flex;
+            justify-content: center;
+        }
+    }
 }
 
 .modal-add-user {
