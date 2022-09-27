@@ -1,18 +1,63 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { postLogin } from '../../services/apiServices';
 import './Login.scss';
+import { toast } from 'react-toastify';
 
 const Login = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {
-        alert("hello")
+    const navigate = useNavigate();
+
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
+
+    const handleLogin = async () => {
+        //validate
+        const isValidateEmail = validateEmail(email);
+
+        if (!isValidateEmail) {
+            toast.error("Invalid Email");
+            return;
+        }
+
+        if (!password) {
+            toast.error("Invalid Password");
+            return;
+        }
+        //submit apis
+        let data = await postLogin(email, password);
+
+        if (data && data.EC === 0) {
+            toast.success(data.EM);
+            navigate('/');
+        }
+        if (data && data.EC !== 0) {
+            toast.error(data.EM);
+        }
+    }
+
+    const handleSingup = () => {
+        navigate("/register");
     }
 
     return (
         <div className="login-container">
             <div className="header">
-                Don't have an account yet?
+                <span>Don't have an account yet?</span>
+                <button
+                    className="btn-signup"
+                    onClick={() => handleSingup()}
+                >
+                    Sign up
+                </button>
             </div>
             <div className="title col-4 mx-auto">
                 Tobi
@@ -47,6 +92,14 @@ const Login = (props) => {
                     >
                         Login
                     </button>
+                </div>
+                <div className="text-center">
+                    <span
+                        className="back"
+                        onClick={() => navigate('/')}
+                    >
+                        &#60;&#60; Go To Home
+                    </span>
                 </div>
             </div>
         </div >

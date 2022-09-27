@@ -1,9 +1,10 @@
-.login-container {
+.register-container {
     .header {
         height: 45px;
         text-align: right;
         padding: 5px 100px 0 100px;
-        .btn-signup {
+
+        .btn-login {
             padding: 3px 15px;
             margin-left: 15px;
             border-radius: 5px;
@@ -14,14 +15,12 @@
             }
         }
     }
-
     .title {
         font-size: 25px;
         padding: 20px 0;
         text-align: center;
         font-weight: 500;
     }
-
     .welcome {
         font-size: 20px;
         padding: 10px 0;
@@ -32,18 +31,35 @@
             margin-bottom: 15px;
             margin-top: 3px;
         }
-
-        .btn-submit {
+        .btn-register {
             width: 100%;
-            border: none;
+            height: 40px;
+            border: 1px solid;
             border-radius: 5px;
             background-color: black;
             color: white;
-            height: 40px;
-            margin: 10px 0;
+            margin: 15px 0;
         }
+
         .back {
             cursor: pointer;
+        }
+        .field-icon {
+            float: right;
+            margin-left: -25px;
+            margin-top: -25px;
+            position: relative;
+            z-index: 2;
+        }
+        .pass-group {
+            position: relative;
+
+            .icons-eye {
+                cursor: pointer;
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+            }
         }
     }
 }
