@@ -3,10 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { getAllQuiz } from '../../services/apiServices';
 import './ListQuiz.scss';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ListQuiz = (props) => {
     const [arrQuiz, setArrQuiz] = useState([]);
+
 
     const navigate = useNavigate();
 
@@ -20,7 +21,6 @@ const ListQuiz = (props) => {
             setArrQuiz(res.DT)
         }
     }
-
     return (
         <div className="list-quiz-container container">
             {
@@ -35,7 +35,7 @@ const ListQuiz = (props) => {
                                 </Card.Text>
                                 <Button
                                     variant="primary"
-                                    onClick={() => navigate(`/quiz/${quiz.id}`)}
+                                    onClick={() => navigate(`/quiz/${quiz.id}`, { state: { quizTitle: quiz.description } })}
                                 >Start Now</Button>
                             </Card.Body>
                         </Card>
