@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import videoHomePage from "../../assets/videos/video-homepage.mp4"
 
 const HomePage = (props) => {
+    const navigate = useNavigate();
+    const isAuthenticated = useSelector(state => state.user.isAuthenticated);
     return (
         <div className="homepage-container">
             <video autoPlay muted loop>
@@ -16,12 +20,19 @@ const HomePage = (props) => {
                     And your audience won't answer one. Create a typeform instead-and make everyone happy.
                 </div>
                 <div className="title-3">
-                    <button className="btn-getstart">
-                        Get started - it's free
-                    </button>
-                </div>
+                    {
+                        isAuthenticated === false ?
+                            <button className="btn-getstart" onClick={() => navigate('/login')}>
+                                Get started - it's free
+                            </button>
+                            :
+                            <button className="btn-quiz" onClick={() => navigate('/users')}>
+                    Doing Quiz Now
+                </button>
+                    }
             </div>
         </div>
+        </div >
     )
 }
 
