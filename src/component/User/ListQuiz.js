@@ -17,6 +17,7 @@ const ListQuiz = (props) => {
 
     const getQuizData = async () => {
         let res = await getAllQuiz();
+
         if (res.EC === 0) {
             setArrQuiz(res.DT)
         }
