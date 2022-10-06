@@ -28,7 +28,6 @@ const ModalViewUser = (props) => {
         }
     }, [dataView])
 
-    const handleShow = () => setShow(true);
     const handleClose = () => {
         setShow(false)
     };

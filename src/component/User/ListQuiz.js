@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { getAllQuiz } from '../../services/apiServices';
+import { getAllCardQuiz } from '../../services/apiServices';
 import './ListQuiz.scss';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ListQuiz = (props) => {
     const [arrQuiz, setArrQuiz] = useState([]);
-
 
     const navigate = useNavigate();
 
@@ -16,7 +15,7 @@ const ListQuiz = (props) => {
     }, [])
 
     const getQuizData = async () => {
-        let res = await getAllQuiz();
+        let res = await getAllCardQuiz();
 
         if (res.EC === 0) {
             setArrQuiz(res.DT)
