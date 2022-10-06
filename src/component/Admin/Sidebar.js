@@ -13,11 +13,13 @@ import { MdDashboard } from 'react-icons/md';
 import sidebarBg from '../../assets/images/bg2.jpg';
 import 'react-pro-sidebar/dist/css/styles.css';
 import './Sidebar.scss';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Sidebar = (props) => {
     const { collapsed, toggled, handleToggleSidebar } = props;
+    const navigate = useNavigate();
+
     return (
         <ProSidebar
             image={sidebarBg}
@@ -28,19 +30,11 @@ const Sidebar = (props) => {
         >
             <SidebarHeader>
                 <div
-                    style={{
-                        padding: '24px',
-                        textTransform: 'uppercase',
-                        fontWeight: 'bold',
-                        fontSize: 14,
-                        letterSpacing: '1px',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap',
-                    }}
+                    className="logo"
+                    onClick={() => navigate('/')}
                 >
                     <DiReact size="3em" color="blue" />
-                    <span>Tobi</span>
+                    <span >Tobi</span>
                 </div>
             </SidebarHeader>
 
@@ -62,7 +56,10 @@ const Sidebar = (props) => {
                             Quản lý Users
                             <Link to="/admins/manage-users" className="nav-link" />
                         </MenuItem>
-                        <MenuItem>Quản lý Bài Quiz</MenuItem>
+                        <MenuItem>
+                            Quản lý Bài Quiz
+                            <Link to="/admins/manage-quizzes" className="nav-link" />
+                        </MenuItem>
                         <MenuItem>Quản lý Câu Hỏi</MenuItem>
                     </SubMenu>
                 </Menu>

@@ -3,13 +3,11 @@ import { Form } from "react-bootstrap";
 
 const Question = (props) => {
     const { data, index } = props;
-    console.log("Check data question", data)
 
     if (_.isEmpty(data))
         return (<></>)
 
     const handleHanleCheckBox = (event, aId, qId) => {
-        console.log("check : ", aId, qId)
         props.handleCheckBox(aId, qId)
     }
 

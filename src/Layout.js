@@ -1,10 +1,8 @@
 import {
-    BrowserRouter,
     Routes,
     Route,
 } from "react-router-dom";
 import App from './App';
-import User from './component/User/User';
 import Admin from './component/Admin/Admin';
 import HomePage from './component/Home/HomePage';
 import DashBoard from './component/Admin/content/DashBoard';
@@ -15,6 +13,7 @@ import Register from "./component/Auth/Register";
 import ListQuiz from "./component/User/ListQuiz";
 import DetailQuiz from "./component/User/DetailQuiz";
 import { Alert } from "react-bootstrap";
+import ManageQuiz from './component/Admin/content/Quiz/ManageQuiz';
 
 const NotFound = () => {
     return (
@@ -32,12 +31,13 @@ const Layout = (props) => {
                     <Route index element={<HomePage />} />
                     <Route path="/users" element={<ListQuiz />} />
                 </Route>
-                
+
                 <Route path="/quiz/:id" element={<DetailQuiz />} />
 
                 <Route path="/admins" element={<Admin />} >
                     <Route index element={<DashBoard />} />
                     <Route path="manage-users" element={<ManageUser />} />
+                    <Route path="manage-quizzes" element={<ManageQuiz />} />
                 </Route>
 
                 <Route path="/login" element={<Login />} />
