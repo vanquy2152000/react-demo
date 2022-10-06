@@ -24,7 +24,14 @@ const ManageQuiz = (props) => {
         }
     }
 
-    const handleSubmitQuiz = async (data) => {
+    const handleClose = () => {
+        setName("");
+        setDescription("");
+        setType('');
+        setImage("");
+    };
+
+    const handleSubmitQuiz = async () => {
         // validate
         if (!name || !description) {
             toast.error("Name/Description is required")
@@ -34,9 +41,10 @@ const ManageQuiz = (props) => {
         let res = await postCreateNewQuiz(description, name, type?.value, image);
         if (res && res.EC === 0) {
             toast.success(res.EM);
-            setName('');
-            setDescription('');
-            setImage(null);
+            handleClose();
+            // setName('');
+            // setDescription('');
+            // setImage(null);
         }
         else {
             toast.error(res.EM);
