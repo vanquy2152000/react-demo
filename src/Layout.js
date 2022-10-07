@@ -14,6 +14,7 @@ import ListQuiz from "./component/User/ListQuiz";
 import DetailQuiz from "./component/User/DetailQuiz";
 import { Alert } from "react-bootstrap";
 import ManageQuiz from './component/Admin/content/Quiz/ManageQuiz';
+import Questions from "./component/Admin/content/Question/Questions";
 
 const NotFound = () => {
     return (
@@ -38,6 +39,7 @@ const Layout = (props) => {
                     <Route index element={<DashBoard />} />
                     <Route path="manage-users" element={<ManageUser />} />
                     <Route path="manage-quizzes" element={<ManageQuiz />} />
+                    <Route path="manage-questions" element={<Questions />} />
                 </Route>
 
                 <Route path="/login" element={<Login />} />
