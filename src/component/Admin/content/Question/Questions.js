@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FloatingLabel, Form } from "react-bootstrap";
 import Select from 'react-select';
 import './Questions.scss';
@@ -8,14 +8,15 @@ import { RiImageAddFill } from "react-icons/ri";
 import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
 import Lightbox from "react-awesome-lightbox";
+import { getAllQuizForAdmin, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion } from "../../../../services/apiServices";
+
 
 const Questions = (props) => {
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-    ];
-    const [selectedQuiz, setSelectedQuiz] = useState({});
+    // const options = [
+    //     { value: 'chocolate', label: 'Chocolate' },
+    //     { value: 'strawberry', label: 'Strawberry' },
+    //     { value: 'vanilla', label: 'Vanilla' },
+    // ];
     const [questions, setQuestions] = useState([
         {
             id: uuidv4(),
@@ -37,6 +38,27 @@ const Questions = (props) => {
         title: '',
         url: ''
     })
+
+    const [listQuiz, setListQuiz] = useState([]);
+    const [selectedQuiz, setSelectedQuiz] = useState({});
+
+    useEffect(() => {
+        fetchQuiz();
+    }, []);
+
+    const fetchQuiz = async () => {
+        let res = await getAllQuizForAdmin();
+        if (res && res.EC === 0) {
+            let newQuiz = res.DT.map(item => {
+                return {
+                    value: item.id,
+                    label: `${item.id} - ${item.description}`
+                }
+            })
+            setListQuiz(newQuiz)
+        }
+    }
+    console.log("check list quiz:", listQuiz)
 
     const handleAddRemoveQuestion = (type, id) => {
         if (type === 'ADD') {
@@ -130,11 +152,6 @@ const Questions = (props) => {
             setQuestions(questionsClone);
         }
     }
-
-    const handleSubmitQuestionForQuiz = () => {
-        console.log("questions", questions);
-    }
-
     const handlePreviewImage = (questionId) => {
         let questionsClone = _.cloneDeep(questions);
         let index = questionsClone.findIndex(item => item.id === questionId);
@@ -146,6 +163,30 @@ const Questions = (props) => {
             setIsPreviewImage(true);
         }
     }
+
+    const handleSubmitQuestionForQuiz = async () => {
+        console.log("questions", questions, selectedQuiz);
+        // todo
+        // validate data
+
+        //submit questions
+        await Promise.all(questions.map(async (question) => {
+            const q = await postCreateNewQuestionForQuiz(
+                +selectedQuiz.value,
+                question.description,
+                question.imageFile);
+
+            //submit answer
+            await Promise.all(question.answers.map(async (answer) => {
+                await postCreateNewAnswerForQuestion(
+                    answer.description,
+                    answer.isCorrect,
+                    q.DT.id);
+            }))
+        }))
+
+    }
+
 
     return (
         <div className="question-container">
@@ -159,7 +200,7 @@ const Questions = (props) => {
                     <Select
                         defaultValue={selectedQuiz}
                         onChange={setSelectedQuiz}
-                        options={options}
+                        options={listQuiz}
                     />
                 </div>
 
@@ -239,7 +280,7 @@ const Questions = (props) => {
                                                         <AiOutlinePlusCircle className="icon-add" />
                                                     </span>
                                                     {question.answers.length > 1 &&
-                                                        <span onClick={() => handleAddRemoveAnswer('REMOVE', question.id, answer.id)}>
+                                                        <span onClick={() => handleAddRemoveAnswer('REMOVE', question.id, answer.id, selectedQuiz)}>
                                                             <AiOutlineMinusCircle className="icon-remove" />
                                                         </span>
                                                     }
