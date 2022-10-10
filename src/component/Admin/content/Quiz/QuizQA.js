@@ -1,17 +1,17 @@
-import { FloatingLabel, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { FloatingLabel, Form } from "react-bootstrap";
 import Select from 'react-select';
-import './Questions.scss';
+import './QuizQA.scss';
 import { TbCirclePlus, TbCircleMinus } from "react-icons/tb";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { RiImageAddFill } from "react-icons/ri";
 import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
 import Lightbox from "react-awesome-lightbox";
-import { getAllQuizForAdmin, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion } from "../../../../services/apiServices";
+import { getAllQuizForAdmin, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion, getQuizWithQA } from "../../../../services/apiServices";
 import { toast } from 'react-toastify';
 
-const Questions = (props) => {
+const QuizQA = (props) => {
     const initQuestions = [
         {
             id: uuidv4(),
@@ -38,9 +38,16 @@ const Questions = (props) => {
     const [listQuiz, setListQuiz] = useState([]);
     const [selectedQuiz, setSelectedQuiz] = useState({});
 
+
     useEffect(() => {
         fetchQuiz();
     }, []);
+
+    useEffect(() => {
+        if (selectedQuiz && selectedQuiz.value) {
+            fetchQuizWithQA();
+        }
+    }, [selectedQuiz])
 
     const fetchQuiz = async () => {
         let res = await getAllQuizForAdmin();
@@ -54,7 +61,31 @@ const Questions = (props) => {
             setListQuiz(newQuiz)
         }
     }
-    console.log("check list quiz:", listQuiz)
+
+    const urltoFile = (url, filename, mimeType) => {
+        return (fetch(url)
+            .then(function (res) { return res.arrayBuffer(); })
+            .then(function (buf) { return new File([buf], filename, { type: mimeType }); })
+        );
+    }
+
+    const fetchQuizWithQA = async () => {
+        let res = await getQuizWithQA(selectedQuiz.value);
+        if (res && res.EC === 0) {
+            let newQA = [];
+            for (let i = 0; i < res.DT.qa.length; i++) {
+                let q = res.DT.qa[i];
+                if (q.imageFile) {
+                    q.imageName = `Question-${q.id}.png`;
+                    q.imageFile =
+                        await urltoFile(`data:image/png;base64,${q.imageFile}`, `Question-${q.id}.png`, 'image/png')
+                }
+                newQA.push(q);
+            }
+            setQuestions(newQA);
+            console.log("Check new QA", newQA)
+        }
+    }
 
     const handleAddRemoveQuestion = (type, id) => {
         if (type === 'ADD') {
@@ -223,10 +254,6 @@ const Questions = (props) => {
 
     return (
         <div className="question-container">
-            <div className="title">
-                manage questions
-            </div>
-            <hr />
             <div className="add-new-question">
                 <div className="col-6">
                     <label className="mb-2">Select Quiz :</label>
@@ -348,4 +375,4 @@ const Questions = (props) => {
         </div >
     )
 }
-export default Questions;
+export default QuizQA;

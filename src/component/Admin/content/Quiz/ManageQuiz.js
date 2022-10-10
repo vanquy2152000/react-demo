@@ -5,6 +5,8 @@ import { useState } from "react";
 import { postCreateNewQuiz } from "../../../../services/apiServices";
 import { toast } from 'react-toastify';
 import TableQuiz from './TableQuiz'
+import QuizQA from './QuizQA';
+import AssignQuiz from './AssignQuiz';
 
 const options = [
     { value: 'EASY', label: 'EASY' },
@@ -103,14 +105,31 @@ const ManageQuiz = (props) => {
                                 </Form.Group>
                             </fieldset>
                         </div>
+                        <div className="list-detail">
+                            <TableQuiz />
+                        </div>
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-            <hr />
 
-            <div className="list-detail">
-                <TableQuiz />
-            </div>
+            <Accordion defaultActiveKey="1">
+                <Accordion.Item eventKey="1">
+                    <Accordion.Header>Update Q/A Quizzes</Accordion.Header>
+                    <Accordion.Body>
+                        <QuizQA />
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
+
+            <Accordion defaultActiveKey="2">
+                <Accordion.Item eventKey="2">
+                    <Accordion.Header>Assign to Users</Accordion.Header>
+                    <Accordion.Body>
+                        <AssignQuiz />
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
+
         </div >
     )
 }
