@@ -54,7 +54,6 @@ const Questions = (props) => {
             setListQuiz(newQuiz)
         }
     }
-    console.log("check list quiz:", listQuiz)
 
     const handleAddRemoveQuestion = (type, id) => {
         if (type === 'ADD') {
@@ -161,7 +160,6 @@ const Questions = (props) => {
     }
 
     const handleSubmitQuestionForQuiz = async () => {
-        console.log("questions", questions, selectedQuiz);
         // todo
         if (_.isEmpty(selectedQuiz)) {
             toast.error("Please choose a Quiz!")
