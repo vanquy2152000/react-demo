@@ -22,6 +22,7 @@ const RightContent = (props) => {
     }
 
     const handleClickQuestion = (index, question) => {
+        props.setIndex(index);
         if (refDiv.current) {
             console.log("ref", refDiv.current)
             refDiv.current.forEach(item => {
@@ -39,7 +40,6 @@ const RightContent = (props) => {
         }
 
         refDiv.current[index].className = "question clicked";
-        props.setIndex(index);
     }
 
     return (
