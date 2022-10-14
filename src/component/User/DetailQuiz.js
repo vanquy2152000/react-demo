@@ -86,21 +86,6 @@ const DetailQuiz = () => {
     };
 
     const handleFinishQuiz = async () => {
-        //     {
-        //         "quizId": 1,
-        //         "answers": [
-        //             {
-        //                 "questionId": 1,
-        //                 "userAnswerId": [3]
-        //             },
-        //             {
-        //                 "questionId": 2,
-        //                 "userAnswerId": [6]
-        //             }
-        //         ]
-        //     }
-        console.log("Check data before submit", dataQuiz);
-
         let payload = {
             quizId: +quizId,
             answers: [],
@@ -176,6 +161,8 @@ const DetailQuiz = () => {
             <div className="right-content">
                 <RightContent
                     dataQuiz={dataQuiz}
+                    handleFinishQuiz={handleFinishQuiz}
+                    setIndex={setIndex}
                 />
             </div>
             <ModalResultQuiz
