@@ -24,7 +24,6 @@ const RightContent = (props) => {
     const handleClickQuestion = (index, question) => {
         props.setIndex(index);
         if (refDiv.current) {
-            console.log("ref", refDiv.current)
             refDiv.current.forEach(item => {
                 if (item && item.className === "question clicked") {
                     item.className = "question";

@@ -29,7 +29,6 @@ instance.interceptors.response.use(function (response) {
     return response && response.data ? response.data : response;
 }, function (error) {
     NProgress.done();
-    console.log("check error : ", error);
     return error && error.response && error.response.data ? error.response.data : Promise.reject(error);
 });
 
