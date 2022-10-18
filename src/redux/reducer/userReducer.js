@@ -1,5 +1,5 @@
 
-import { FETCH_USER_LOGIN_SUSSCESS } from '../action/userAction';
+import { FETCH_USER_LOGIN_SUSSCESS, USER_LOGOUT_SUSSCESS } from '../action/userAction';
 const INITIAL_STATE = {
     account: {
         access_token: '',
@@ -28,10 +28,19 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 isAuthenticated: true
             };
 
-        // case DECREMENT:
-        //     return {
-        //         ...state, count: state.count - 1,
-        //     };
+        case USER_LOGOUT_SUSSCESS:
+            return {
+                ...state,
+                account: {
+                    access_token: '',
+                    email: '',
+                    refresh_token: '',
+                    username: '',
+                    role: '',
+                    image: ''
+                },
+                isAuthenticated: false
+            };
         default: return state;
     }
 };

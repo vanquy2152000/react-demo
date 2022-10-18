@@ -4,6 +4,7 @@ import { postSignup } from '../../services/apiServices';
 import './Register.scss';
 import { toast } from 'react-toastify';
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import Language from './../Header/Language';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -61,6 +62,7 @@ const Register = () => {
                 >
                     Log in
                 </button>
+                <Language />
             </div>
             <div className="title col-4 mx-auto">
                 Tobi

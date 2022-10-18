@@ -89,6 +89,11 @@ body {
     }
   }
 }
+.languages {
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+}
 
 video {
   position: fixed;
