@@ -16,6 +16,7 @@ import { Alert } from "react-bootstrap";
 import ManageQuiz from './component/Admin/content/Quiz/ManageQuiz';
 import Questions from "./component/Admin/content/Question/Questions";
 import PrivateRoute from './routes/PrivateRoute';
+import { Suspense } from "react";
 
 const NotFound = () => {
     return (
@@ -27,7 +28,7 @@ const NotFound = () => {
 
 const Layout = (props) => {
     return (
-        <>
+        <Suspense fallback={<div>Loading ...</div>}>
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route index element={<HomePage />} />
@@ -67,7 +68,7 @@ const Layout = (props) => {
                 draggable
                 pauseOnHover
             />
-        </>
+        </Suspense>
     )
 }
 export default Layout;
