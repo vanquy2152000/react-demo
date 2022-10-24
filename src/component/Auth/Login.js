@@ -7,11 +7,14 @@ import { useDispatch } from 'react-redux';
 import { doLogin } from '../../redux/action/userAction';
 import { ImSpinner } from 'react-icons/im'
 import Language from './../Header/Language';
+import { useTranslation } from 'react-i18next';
 
 const Login = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
+    const { t, i18n } = useTranslation();
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -68,12 +71,12 @@ const Login = (props) => {
     return (
         <div className="login-container">
             <div className="header">
-                <span>Don't have an account yet?</span>
+                <span>{t('login.account')}</span>
                 <button
                     className="btn-signup"
                     onClick={() => handleSingup()}
                 >
-                    Sign up
+                    {t('login.signup')}
                 </button>
                 <Language />
             </div>
@@ -81,11 +84,11 @@ const Login = (props) => {
                 Tobi
             </div>
             <div className="welcome col-4 mx-auto">
-                Hello, Who's this?
+                {t('login.title')}
             </div>
             <div className="content-form col-4 mx-auto">
                 <div className="form-group">
-                    <label>Email</label>
+                    <label>{t('login.email')}</label>
                     <input
                         type={"email"}
                         className="form-control"
@@ -94,7 +97,7 @@ const Login = (props) => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Password</label>
+                    <label>{t('login.password')}</label>
                     <input
                         type={"password"}
                         className="form-control"
@@ -103,7 +106,7 @@ const Login = (props) => {
                         onKeyDown={(event) => handleKeyDown(event)}
                     />
                 </div>
-                <span className="forgot-password">Forgot password</span>
+                <span className="forgot-password">{t('login.forgot')}</span>
                 <div>
                     <button
                         className="btn-submit"
@@ -111,7 +114,7 @@ const Login = (props) => {
                         disabled={isLoading}
                     >
                         {isLoading === true && <ImSpinner className="loader-icon" />}
-                        <span>Login</span>
+                        <span>{t('login.login')}</span>
                     </button>
                 </div>
                 <div className="text-center">
@@ -119,7 +122,7 @@ const Login = (props) => {
                         className="back"
                         onClick={() => navigate('/')}
                     >
-                        &#60;&#60; Go To Home
+                        &#60;&#60; {t('login.back')}
                     </span>
                 </div>
             </div>

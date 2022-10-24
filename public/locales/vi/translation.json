@@ -2,7 +2,77 @@
     "homepage": {
         "title1": "Có nhiều cách tốt hơn để hỏi",
         "title2": "Bạn không muốn tạo ra một hình thức nhàm chán. Và khán giả của bạn sẽ không trả lời. Thay vào đó, hãy tạo một dạng chữ-và làm cho mọi người hài lòng.",
-        "title3child1": "Bắt đầu - hoàn toàn miễn phí",
-        "title3child2": "Trả lời câu hỏi ngay bây giờ"
+        "title3": {
+            "login": "Bắt đầu - hoàn toàn miễn phí",
+            "doing": "Trả lời câu hỏi ngay bây giờ"
+        }
+    },
+    "header": {
+        "home": "Trang Chủ",
+        "admin": "Quản Trị Viên",
+        "user": "Người Dùng",
+        "login": "Đăng Nhập",
+        "signup": "Đăng Kí",
+        "setting": {
+            "setting": "Cài Đặt",
+            "profile": "Trang cá nhân",
+            "logout": "Đăng xuất"
+        },
+        "quiz": "Làm Bài Thi"
+    },
+    "login": {
+        "account": "Bạn chưa có tài khoản?",
+        "signup": "Đăng Kí",
+        "title": "Xin chào, đây là cái gì?",
+        "email": "Email",
+        "password": "Mật Khẩu",
+        "forgot": "Quên Mật Khẩu",
+        "login": "Đăng Nhập",
+        "back": "Quay về Trang Chủ"
+    },
+    "register": {
+        "account": "Đã có tài khoản",
+        "login": "Đăng Nhập",
+        "title": "Bắt đầu cuộc hành trình của bạn?",
+        "email": "Email",
+        "password": "Mật Khẩu",
+        "username": "Tên Đăng Nhập",
+        "signup": "Đăng Kí",
+        "back": "Quay về Trang Chủ"
+    },
+    "quiz": {
+        "quiz": "Bài Thi",
+        "start": "Bắt Đầu"
+    },
+    "sidebar": {
+        "dashboard": "Bảng Thống Kê",
+        "features": {
+            "features": "Chức Năng",
+            "user": "Quản Lí Người Dùng",
+            "quiz": "Quản Lí Bài Thi",
+            "question": "Quản Lí Câu Hỏi"
+        }
+    },
+    "dashboard": {
+        "title": "Trang tổng quan phân tích",
+        "user": "Tổng Người Dùng",
+        "quiz": "Tổng Bài Thi",
+        "question": "Tổng Câu Hỏi",
+        "answer": "Tổng Câu Trả Lời"
+    },
+    "manage": {
+        "user": {
+            "title": "Quản Lí Người Dùng",
+            "add": "Tạo Mới Người Dùng",
+            "no": "STT",
+            "username": "Tên Đăng Nhập",
+            "email": "Email",
+            "role": "Quyền",
+            "action": "Chức Năng",
+            "view": "Xem",
+            "update": "Cập Nhật",
+            "delete": "Xóa",
+            "notfound": "Không có dữ liệu"
+        }
     }
 }

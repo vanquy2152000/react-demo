@@ -1,8 +1,10 @@
 import Table from 'react-bootstrap/Table';
 import ReactPaginate from "react-paginate";
+import { useTranslation } from 'react-i18next';
 
 const TableUserPaginate = (props) => {
     const { listUsers, pageCount } = props;
+    const { t, i18n } = useTranslation();
 
     const handlePageClick = (event) => {
         props.fetchListUsersWithPaginate(+event.selected + 1);
@@ -13,11 +15,11 @@ const TableUserPaginate = (props) => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>User Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Action</th>
+                        <th>{t('manage.user.no')}</th>
+                        <th>{t('manage.user.username')}</th>
+                        <th>{t('manage.user.email')}</th>
+                        <th>{t('manage.user.role')}</th>
+                        <th>{t('manage.user.action')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,19 +37,19 @@ const TableUserPaginate = (props) => {
                                             onClick={() => {
                                                 props.handleClickBtnView(item);
                                             }}
-                                        >View</button>
+                                        >{t('manage.user.view')}</button>
                                         <button
                                             className="btn btn-warning mx-3"
                                             onClick={() => {
                                                 props.handleClickBtnUpdate(item);
                                             }}
-                                        >Update</button>
+                                        >{t('manage.user.update')}</button>
                                         <button
                                             className="btn btn-danger"
                                             onClick={() => {
                                                 props.handleClickBtnDelete(item);
                                             }}
-                                        >Delete</button>
+                                        >{t('manage.user.delete')}</button>
                                     </td>
                                 </tr>
                             )
@@ -55,19 +57,19 @@ const TableUserPaginate = (props) => {
                     }
                     {listUsers && listUsers.length === 0 &&
                         <tr>
-                            <td colSpan={'5'}>Not found data</td>
+                            <td colSpan={'5'}>{t('manage.user.notfound')}</td>
                         </tr>
                     }
                 </tbody>
             </Table>
             <div className="user-pagination">
                 <ReactPaginate
-                    nextLabel="Next >"
+                    nextLabel={i18n.language === "vi" ? "Tiếp Theo >" : "Next >"}
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={3}
                     marginPagesDisplayed={2}
                     pageCount={pageCount}
-                    previousLabel="< Prev"
+                    previousLabel={i18n.language === "vi" ? "< Trước" : "< Prev"}
                     pageClassName="page-item"
                     pageLinkClassName="page-link"
                     previousClassName="page-item"

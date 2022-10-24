@@ -4,10 +4,13 @@ import Card from 'react-bootstrap/Card';
 import { getQuizByUser } from '../../services/apiServices';
 import './ListQuiz.scss';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ListQuiz = (props) => {
     const [arrQuiz, setArrQuiz] = useState([]);
     const navigate = useNavigate();
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         getQuizData();
@@ -30,14 +33,14 @@ const ListQuiz = (props) => {
                             <Card style={{ width: '18rem' }} key={`${index}-quiz`}>
                                 <Card.Img variant="top" src={`data:image/jpeg;base64,${quiz.image}`} />
                                 <Card.Body>
-                                    <Card.Title>Quiz {index + 1}</Card.Title>
+                                    <Card.Title>{t('quiz.quiz')} {index + 1}</Card.Title>
                                     <Card.Text>
                                         {quiz.description}
                                     </Card.Text>
                                     <Button
                                         variant="primary"
                                         onClick={() => navigate(`/quiz/${quiz.id}`, { state: { quizTitle: quiz.description } })}
-                                    >Start Now</Button>
+                                    >{t('quiz.start')}</Button>
                                 </Card.Body>
                             </Card>
                         )

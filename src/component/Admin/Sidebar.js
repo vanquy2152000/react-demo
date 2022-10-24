@@ -14,11 +14,14 @@ import sidebarBg from '../../assets/images/bg2.jpg';
 import 'react-pro-sidebar/dist/css/styles.css';
 import './Sidebar.scss';
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 
 const Sidebar = (props) => {
     const { collapsed, toggled, handleToggleSidebar } = props;
     const navigate = useNavigate();
+
+    const { t, i18n } = useTranslation();
 
     return (
         <ProSidebar
@@ -43,25 +46,25 @@ const Sidebar = (props) => {
                     <MenuItem
                         icon={<MdDashboard />}
                     >
-                        Dashboard
+                        {t('sidebar.dashboard')}
                         <Link to="/admins" className="nav-link" />
                     </MenuItem>
                 </Menu>
                 <Menu iconShape="circle">
                     <SubMenu
                         icon={<FaGem />}
-                        title="Features"
+                        title={i18n.language === "vi" ? "Chức Năng" : "Features"}
                     >
                         <MenuItem>
-                            Quản lý Users
+                            {t('sidebar.features.user')}
                             <Link to="/admins/manage-users" className="nav-link" />
                         </MenuItem>
                         <MenuItem>
-                            Quản lý Bài Quiz
+                            {t('sidebar.features.quiz')}
                             <Link to="/admins/manage-quizzes" className="nav-link" />
                         </MenuItem>
                         <MenuItem>
-                            Quản lý Câu Hỏi
+                            {t('sidebar.features.question')}
                             <Link to="/admins/manage-questions" className="nav-link" />
                         </MenuItem>
                     </SubMenu>

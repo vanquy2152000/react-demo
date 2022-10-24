@@ -8,12 +8,14 @@ import { logOut } from '../../services/apiServices';
 import { toast } from 'react-toastify';
 import { doLogOut } from '../../redux/action/userAction';
 import Language from './Language';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isAuthenticated = useSelector(state => state.user.isAuthenticated);
     const account = useSelector(state => state.user.account);
+    const { t, i18n } = useTranslation();
 
     const handleLogin = () => {
         navigate("/login");
@@ -35,6 +37,7 @@ const Header = () => {
         }
 
     }
+    console.log("check : ", i18n.language)
 
     return (
         <Navbar bg="light" expand="lg">
@@ -43,9 +46,9 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink to="/" className="nav-link">Home</NavLink>
-                        <NavLink to="/admins" className="nav-link">Admin</NavLink>
-                        <NavLink to="/users" className="nav-link">User</NavLink>
+                        <NavLink to="/" className="nav-link">{t('header.home')}</NavLink>
+                        <NavLink to="/admins" className="nav-link">{t('header.admin')}</NavLink>
+                        <NavLink to="/users" className="nav-link">{t('header.user')}</NavLink>
                     </Nav>
                     <Nav>
                         {
@@ -55,19 +58,19 @@ const Header = () => {
                                         className="btn-login"
                                         onClick={() => handleLogin()}
                                     >
-                                        Log in
+                                        {t('header.login')}
                                     </button>
                                     <button
                                         className="btn-signup"
                                         onClick={() => handleRegister()}
                                     >
-                                        Sign up
+                                        {t('header.signup')}
                                     </button>
                                 </>
                                 :
-                                <NavDropdown title="Settings" id="basic-nav-dropdown">
-                                    <NavDropdown.Item>Profile</NavDropdown.Item>
-                                    <NavDropdown.Item onClick={() => handleLogOut()}>Log out</NavDropdown.Item>
+                                <NavDropdown title={i18n.language === "vi" ? "Cài Đặt" : "Setting"} id="basic-nav-dropdown">
+                                    <NavDropdown.Item>{t('header.setting.profile')}</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleLogOut()}>{t('header.setting.logout')}</NavDropdown.Item>
                                 </NavDropdown>
                         }
                         <Language />

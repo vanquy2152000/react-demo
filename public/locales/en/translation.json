@@ -2,7 +2,75 @@
     "homepage": {
         "title1": "There's a better way to ask",
         "title2": "You don't want to make a boring form. And your audience won't answer one. Create a typeform instead-and make everyone happy.",
-        "title3child1": "Get started - it's free",
-        "title3child2": " Doing Quiz Now"
+        "title3": {
+            "login": "Get started - it's free",
+            "doing": "Doing Quiz Now"
+        }
+    },
+    "header": {
+        "home": "Home",
+        "admin": "Admin",
+        "user": "User",
+        "login": "Login",
+        "signup": "Sign Up",
+        "setting": {
+            "profile": "Profile",
+            "logout": "Log Out"
+        },
+        "quiz": "Do Quiz"
+    },
+    "login": {
+        "account": "Don't have an account yet?",
+        "signup": "Sign Up",
+        "title": "Hello, Who's this?",
+        "email": "Email",
+        "password": "Password",
+        "forgot": "Forgot Password",
+        "login": "Login",
+        "back": "Go To Home"
+    },
+    "register": {
+        "account": "Aready have an account?",
+        "login": "Login",
+        "title": "Start your journey?",
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "signup": "Create my free account",
+        "back": "Go To Homepage"
+    },
+    "quiz": {
+        "quiz": "Quiz",
+        "start": "Start Now"
+    },
+    "sidebar": {
+        "dashboard": "Dashboard",
+        "features": {
+            "user": "User Management",
+            "quiz": "Quiz Management",
+            "question": "Question Management"
+        }
+    },
+    "dashboard": {
+        "title": "Analytics Dashboard",
+        "user": "Total User",
+        "quiz": "Total Quizzes",
+        "question": "Total Questions",
+        "answer": "Total Answers"
+    },
+    "manage": {
+        "user": {
+            "title": "Manage User",
+            "add": "Add New User",
+            "no": "No",
+            "username": "User Name",
+            "email": "Email",
+            "role": "Role",
+            "action": "Action",
+            "view": "View",
+            "update": "Update",
+            "delete": "Delete",
+            "notfound": "Not found data"
+        }
     }
 }

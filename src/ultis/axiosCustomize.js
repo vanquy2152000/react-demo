@@ -28,6 +28,13 @@ instance.interceptors.response.use(function (response) {
     NProgress.done();
     return response && response.data ? response.data : response;
 }, function (error) {
+
+    // Token expired
+
+    if (error.response.data && error.response.data.EC === -999) {
+        window.location.href = '/login'
+    }
+
     NProgress.done();
     return error && error.response && error.response.data ? error.response.data : Promise.reject(error);
 });
