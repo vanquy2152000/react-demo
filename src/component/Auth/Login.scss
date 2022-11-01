@@ -1,0 +1,72 @@
+.login-container {
+    .header {
+        height: 45px;
+        padding: 5px 100px 0 100px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 15px;
+        .btn-signup {
+            padding: 3px 15px;
+            margin-left: 15px;
+            border-radius: 5px;
+            background-color: #e6e2e2;
+            border: 1px solid;
+            &:hover {
+                background-color: white;
+            }
+        }
+    }
+
+    .title {
+        font-size: 25px;
+        padding: 20px 0;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .welcome {
+        font-size: 20px;
+        padding: 10px 0;
+        text-align: center;
+    }
+    .content-form {
+        input {
+            margin-bottom: 15px;
+            margin-top: 3px;
+        }
+        .loader-icon {
+            font-size: 14px;
+            margin-right: 7px;
+            color: #00d4ff;
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            from {
+                transform: scale(1) rotate(0deg);
+            }
+            to {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        .btn-submit {
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            height: 40px;
+            margin: 10px 0;
+            &:disabled {
+                background-color: #dddddd;
+                color: #afafaf;
+                cursor: no-drop;
+            }
+        }
+        .back {
+            cursor: pointer;
+        }
+    }
+}

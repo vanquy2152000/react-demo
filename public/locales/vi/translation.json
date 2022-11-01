@@ -1,0 +1,178 @@
+{
+    "homepage": {
+        "title1": "Có nhiều cách tốt hơn để hỏi",
+        "title2": "Bạn không muốn tạo ra một hình thức nhàm chán. Và khán giả của bạn sẽ không trả lời. Thay vào đó, hãy tạo một dạng chữ-và làm cho mọi người hài lòng.",
+        "title3": {
+            "login": "Bắt đầu - hoàn toàn miễn phí",
+            "doing": "Trả lời câu hỏi ngay bây giờ"
+        }
+    },
+    "header": {
+        "home": "Trang Chủ",
+        "admin": "Quản Trị Viên",
+        "user": "Người Dùng",
+        "login": "Đăng Nhập",
+        "signup": "Đăng Kí",
+        "setting": {
+            "setting": "Cài Đặt",
+            "profile": "Trang cá nhân",
+            "logout": "Đăng xuất"
+        },
+        "quiz": "Làm Bài Thi"
+    },
+    "login": {
+        "account": "Bạn chưa có tài khoản?",
+        "signup": "Đăng Kí",
+        "title": "Xin chào, đây là cái gì?",
+        "email": "Email",
+        "password": "Mật Khẩu",
+        "forgot": "Quên Mật Khẩu",
+        "login": "Đăng Nhập",
+        "back": "Quay về Trang Chủ"
+    },
+    "register": {
+        "account": "Đã có tài khoản",
+        "login": "Đăng Nhập",
+        "title": "Bắt đầu cuộc hành trình của bạn?",
+        "email": "Email",
+        "password": "Mật Khẩu",
+        "username": "Tên Đăng Nhập",
+        "signup": "Đăng Kí",
+        "back": "Quay về Trang Chủ"
+    },
+    "quiz": {
+        "quiz": "Bài Thi",
+        "start": "Bắt Đầu"
+    },
+    "sidebar": {
+        "dashboard": "Bảng Thống Kê",
+        "features": {
+            "features": "Chức Năng",
+            "user": "Quản Lí Người Dùng",
+            "quiz": "Quản Lí Bài Thi",
+            "question": "Quản Lí Câu Hỏi"
+        }
+    },
+    "dashboard": {
+        "title": "Trang tổng quan phân tích",
+        "user": "Tổng Người Dùng",
+        "quiz": "Tổng Bài Thi",
+        "question": "Tổng Câu Hỏi",
+        "answer": "Tổng Câu Trả Lời"
+    },
+    "manage": {
+        "user": {
+            "title": "Quản Lí Người Dùng",
+            "add": "Tạo Mới Người Dùng",
+            "no": "STT",
+            "username": "Tên Đăng Nhập",
+            "email": "Email",
+            "role": "Quyền",
+            "action": "Chức Năng",
+            "view": "Xem",
+            "update": "Cập Nhật",
+            "delete": "Xóa",
+            "notfound": "Không có dữ liệu"
+        },
+        "view": {
+            "title": "Xem chi tiết",
+            "email": "Email",
+            "password": "Mật Khẩu",
+            "username": "Tên Đăng Nhập",
+            "role": "Quyền",
+            "img": "Xem trước img",
+            "close": "Đóng"
+        },
+        "update": {
+            "title": "Cập Nhật Người Dùng",
+            "email": "Email",
+            "password": "Mật Khẩu",
+            "username": "Tên Người Dùng",
+            "role": "Quyền",
+            "img": "Xem trước img",
+            "upload": "Tải Ảnh Lên",
+            "close": "Đóng",
+            "save": "Lưu"
+        },
+        "delete": {
+            "title": "Xác nhận xóa người dùng",
+            "text": "Bạn có chắc không ? Email",
+            "cancel": "Hủy Bỏ",
+            "confirm": "Xác Nhận "
+        },
+        "quiz": {
+            "title1": "Quản lí bài thi",
+            "title2": "Cập nhật câu hỏi và câu trả lời của bài thi",
+            "title3": "Chỉ định người dùng",
+            "addnew": "Thêm Mới Bài Thi",
+            "name": "Tên",
+            "description": "Miêu Tả",
+            "quiztype": "Độ Khó....",
+            "img": "Tải Ảnh Lên",
+            "save": "Lưu",
+            "listquiz": "Danh Sách Các Bài Thi : ",
+            "id": "ID",
+            "type": "Độ Khó",
+            "action": "Chức Năng",
+            "edit": "Sửa",
+            "delete": "Xóa",
+            "selectquiz": "Chọn Bài Thi",
+            "selectuser": "Chọn Người Dùng",
+            "assign": "Xác Nhận"
+        },
+        "deletequiz": {
+            "title": "Xác nhận xóa câu hỏi",
+            "text": "Bạn có chắc xóa bài kiểm tra này không ? . id = ",
+            "cancel": "Hủy Bỏ",
+            "confirm": "Xác Nhận "
+        },
+        "question": {
+            "addnew": "Thêm Mới Câu Hỏi",
+            "save": "Lưu Câu Hỏi",
+            "selectquiz": "Chọn Bài Thi",
+            "description": "Chi Tiết",
+            "upload": "0 tệp ảnh",
+            "answer": "Câu trả lời",
+            "question": "Mô Tả Câu Hỏi",
+            "title": "Quản Lí Câu Hỏi"
+        }
+    },
+    "profile": {
+        "title": "Trang cá nhân",
+        "userinfo": {
+            "userinfo": "Thông tin cá nhân",
+            "username": "Tên Người Dùng",
+            "email": "Email",
+            "role": "Quyền",
+            "upload": "Tải Ảnh Lên",
+            "img": "Xem trước ảnh",
+            "update": "Cập Nhật"
+        },
+        "password": {
+            "password": "Mật Khẩu",
+            "curPassword": "Mật Khẩu Hiện Tại",
+            "newPassword": "Mật Khẩu Mới",
+            "confPassword": "Xác Nhận Mật Khẩu",
+            "update": "Cập Nhật"
+        },
+        "history": {
+            "history": "Lịch Sử",
+            "no": "STT",
+            "quizName": "Tên Bài Thi",
+            "totalQuestion": "Tổng Số Câu Hỏi",
+            "totalCorrect": "Tổng Số Câu Trả Lời",
+            "time": "Thời Gian"
+        }
+    },
+    "modal": {
+        "title": "Thêm Mới Người Dùng",
+        "email": "Email",
+        "password": "Mật Khẩu",
+        "username": "Tên Người Dùng",
+        "role": "Quyền",
+        "upload": "Tải Ảnh Lên",
+        "img": "Xem trước ảnh",
+        "close": "Đóng",
+        "save": "Lưu"
+    }
+}
