@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap"
 import { getAllQuizForAdmin } from "../../../../services/apiServices";
 import ModalDeleteQuiz from "./ModalDeleteQuiz";
 import ModalUpdateQuiz from "./ModalUpdateQuiz";
+import { useTranslation } from 'react-i18next';
 
 const TableQuiz = () => {
     const [listQuiz, setListQuiz] = useState([]);
@@ -11,6 +12,8 @@ const TableQuiz = () => {
 
     const [dataUpdate, setDataUpdate] = useState({});
     const [dataDelete, setDataDelete] = useState({});
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         fetchQuiz();
@@ -38,15 +41,15 @@ const TableQuiz = () => {
     }
     return (
         <>
-            <div className="mb-3">List Quizzes : </div>
+            <div className="mb-3">{t('manage.quiz.listquiz')}</div>
             <Table striped bordered hover >
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Type</th>
-                        <th>Action</th>
+                        <th>{t('manage.quiz.id')}</th>
+                        <th>{t('manage.quiz.name')}</th>
+                        <th>{t('manage.quiz.description')}</th>
+                        <th>{t('manage.quiz.type')}</th>
+                        <th>{t('manage.quiz.action')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,10 +63,10 @@ const TableQuiz = () => {
                                 <td style={{ display: 'flex', gap: '15px' }}>
                                     <button
                                         onClick={() => handleClickUpdateQuiz(item)}
-                                        className="btn btn-warning">Edit</button>
+                                        className="btn btn-warning">{t('manage.quiz.edit')}</button>
                                     <button
                                         onClick={() => handleClickDeleteQuiz(item)}
-                                        className="btn btn-danger">Delete</button>
+                                        className="btn btn-danger">{t('manage.quiz.delete')}</button>
                                 </td>
                             </tr>
                         )

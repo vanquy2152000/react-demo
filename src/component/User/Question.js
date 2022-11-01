@@ -2,10 +2,10 @@ import _ from "lodash";
 import { Form } from "react-bootstrap";
 import Lightbox from "react-awesome-lightbox";
 import { useState } from 'react';
-
+import { IoIosClose, IoIosCheckmark } from "react-icons/io";
 
 const Question = (props) => {
-    const { data, index } = props;
+    const { data, index, isShowAnswer, isSubmitQuiz } = props;
 
     const [isPreviewImage, setIsPreviewImage] = useState(false);
 
@@ -15,7 +15,6 @@ const Question = (props) => {
     const handleHanleCheckBox = (event, aId, qId) => {
         props.handleCheckBox(aId, qId)
     }
-
     return (
         <>
             {data.image ?
@@ -53,7 +52,20 @@ const Question = (props) => {
                                     checked={item.isSelected}
                                     onChange={(event) => handleHanleCheckBox(event, item.id, data.questionId)}
                                     label={item.description}
+                                    disabled={isSubmitQuiz}
                                 />
+                                {
+                                    isShowAnswer === true &&
+                                    <>
+                                        {item.isSelected === true && item.isCorrect === false
+                                            && <IoIosClose className='incorrect' />
+                                        }
+                                        {item.isCorrect === true
+                                            && <IoIosCheckmark className='correct' />
+                                        }
+                                    </>
+                                }
+
                             </div>
                         )
                     })

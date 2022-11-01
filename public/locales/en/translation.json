@@ -71,6 +71,106 @@
             "update": "Update",
             "delete": "Delete",
             "notfound": "Not found data"
+        },
+        "view": {
+            "title": "View A User",
+            "email": "Email",
+            "password": "Password",
+            "username": "User Name",
+            "role": "Role",
+            "img": "Preview img",
+            "close": "Close"
+        },
+        "update": {
+            "title": "Update A User",
+            "email": "Email",
+            "password": "Password",
+            "username": "User Name",
+            "role": "Role",
+            "img": "Preview img",
+            "upload": "Upload File Image",
+            "close": "Close",
+            "save": "Save"
+        },
+        "delete": {
+            "title": "Confirm Delete User",
+            "text": "Are You Sure? Email",
+            "cancel": "Cancel",
+            "confirm": "Confirm "
+        },
+        "quiz": {
+            "title1": "Manage Quizzes",
+            "title2": "Update Q/A Quizzes",
+            "title3": "Assign to Users",
+            "addnew": "Add New Quiz",
+            "name": "Name",
+            "description": "Description",
+            "quiztype": "Quiz Type....",
+            "img": "Upload Image",
+            "save": "Save",
+            "listquiz": "List Quizzes : ",
+            "id": "ID",
+            "type": "Type",
+            "action": "Action",
+            "edit": "Edit",
+            "delete": "Delete",
+            "selectquiz": "Select Quiz",
+            "selectuser": "Select User",
+            "assign": "Assign"
+        },
+        "deletequiz": {
+            "title": "Confirm Delete the Quiz",
+            "text": "Are You Sure to delete this quiz . id = ",
+            "cancel": "Cancel",
+            "confirm": "Confirm "
+        },
+        "question": {
+            "addnew": "Add New Question",
+            "save": "Save Questions",
+            "selectquiz": "Select Quiz",
+            "description": "Description",
+            "upload": "0 file is uploaded",
+            "answer": "Answer",
+            "question": "Question Description",
+            "title": "Manage Questions"
         }
+    },
+    "profile": {
+        "title": "Profile",
+        "userinfo": {
+            "userinfo": "User Information",
+            "username": "Username",
+            "email": "Email",
+            "role": "Role",
+            "upload": "Upload File Image",
+            "img": "Preview Img",
+            "update": "Update"
+        },
+        "password": {
+            "password": "Password",
+            "curPassword": "Current Password",
+            "newPassword": "New Password",
+            "confPassword": "Confirm Password",
+            "update": "Update"
+        },
+        "history": {
+            "history": "History",
+            "no": "No",
+            "quizName": "Quiz Name",
+            "totalQuestion": "Total Question",
+            "totalCorrect": "Total Correct",
+            "time": "Time"
+        }
+    },
+    "modal": {
+        "title": "Add New User",
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "role": "Role",
+        "upload": "Upload File Image",
+        "img": "Preview Img",
+        "close": "Close",
+        "save": "Save"
     }
 }

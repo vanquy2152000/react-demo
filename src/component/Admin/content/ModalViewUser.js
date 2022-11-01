@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import _ from "lodash";
+import { useTranslation } from 'react-i18next';
 
 const ModalViewUser = (props) => {
     const { show, setShow, dataView } = props;
@@ -15,6 +16,8 @@ const ModalViewUser = (props) => {
     const [role, setRole] = useState("USER");
     const [image, setImage] = useState("");
     const [previewImage, setPreviewImage] = useState("");
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         if (!_.isEmpty(dataView)) {
@@ -42,13 +45,13 @@ const ModalViewUser = (props) => {
                 className="modal-add-user"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>View A User</Modal.Title>
+                    <Modal.Title>{t('manage.view.title')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Email</Form.Label>
+                                <Form.Label>{t('manage.view.email')}</Form.Label>
                                 <Form.Control
                                     type="email"
                                     placeholder="Enter Email"
@@ -59,7 +62,7 @@ const ModalViewUser = (props) => {
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPassword">
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>{t('manage.view.password')}</Form.Label>
                                 <Form.Control
                                     type="password"
                                     placeholder="*************"
@@ -72,7 +75,7 @@ const ModalViewUser = (props) => {
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridCity">
-                                <Form.Label>User Name</Form.Label>
+                                <Form.Label>{t('manage.view.username')}</Form.Label>
                                 <Form.Control
                                     type="username"
                                     placeholder="Username"
@@ -83,7 +86,7 @@ const ModalViewUser = (props) => {
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridState">
-                                <Form.Label>Role</Form.Label>
+                                <Form.Label>{t('manage.view.role')}</Form.Label>
                                 <Form.Select
                                     onChange={(event) => setRole(event.target.value)}
                                     value={role}
@@ -102,7 +105,7 @@ const ModalViewUser = (props) => {
                                 {previewImage ?
                                     <img src={previewImage} alt="" />
                                     :
-                                    <span>Preview img</span>
+                                    <span>{t('manage.view.img')}</span>
                                 }
                             </Form.Group>
                         </Row>
@@ -110,7 +113,7 @@ const ModalViewUser = (props) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        {t('manage.view.close')}
                     </Button>
                 </Modal.Footer>
             </Modal>

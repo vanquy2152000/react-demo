@@ -11,7 +11,6 @@ import { FaGem, FaGithub } from 'react-icons/fa';
 import { DiReact } from 'react-icons/di';
 import { MdDashboard } from 'react-icons/md';
 import sidebarBg from '../../assets/images/bg2.jpg';
-import 'react-pro-sidebar/dist/css/styles.css';
 import './Sidebar.scss';
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
@@ -36,7 +35,7 @@ const Sidebar = (props) => {
                     className="logo"
                     onClick={() => navigate('/')}
                 >
-                    <DiReact size="3em" color="blue" />
+                    <DiReact size="3em" color="#03A5F0" />
                     <span >Tobi</span>
                 </div>
             </SidebarHeader>

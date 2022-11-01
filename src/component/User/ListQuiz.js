@@ -18,7 +18,6 @@ const ListQuiz = (props) => {
 
     const getQuizData = async () => {
         let res = await getQuizByUser();
-        console.log("res", res)
         if (res && res.EC === 0) {
             setArrQuiz(res.DT)
         }
@@ -30,11 +29,11 @@ const ListQuiz = (props) => {
                 arrQuiz && arrQuiz.length > 0 ?
                     arrQuiz.map((quiz, index) => {
                         return (
-                            <Card style={{ width: '18rem' }} key={`${index}-quiz`}>
-                                <Card.Img variant="top" src={`data:image/jpeg;base64,${quiz.image}`} />
-                                <Card.Body>
-                                    <Card.Title>{t('quiz.quiz')} {index + 1}</Card.Title>
-                                    <Card.Text>
+                            <Card className="list-card" key={`${index}-quiz`}>
+                                <Card.Img className="card-img" variant="top" src={`data:image/jpeg;base64,${quiz.image}`} />
+                                <Card.Body className="card-body">
+                                    <Card.Title >{t('quiz.quiz')} {index + 1}</Card.Title>
+                                    <Card.Text className="title">
                                         {quiz.description}
                                     </Card.Text>
                                     <Button

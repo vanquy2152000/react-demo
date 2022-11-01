@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
-
+$sidebar-bg-color: #3c4b64;
+@import "react-pro-sidebar/dist/scss/styles.scss";
 $highlight-color: #dee2ec;
 
 .logo {

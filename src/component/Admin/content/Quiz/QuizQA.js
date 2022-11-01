@@ -10,6 +10,7 @@ import _ from 'lodash';
 import Lightbox from "react-awesome-lightbox";
 import { getAllQuizForAdmin, getQuizWithQA, postUpsertQA } from "../../../../services/apiServices";
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 const QuizQA = (props) => {
     const initQuestions = [
@@ -37,6 +38,8 @@ const QuizQA = (props) => {
 
     const [listQuiz, setListQuiz] = useState([]);
     const [selectedQuiz, setSelectedQuiz] = useState({});
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         fetchQuiz();
@@ -263,7 +266,7 @@ const QuizQA = (props) => {
         <div className="question-container">
             <div className="add-new-question">
                 <div className="col-6">
-                    <label className="mb-2">Select Quiz :</label>
+                    <label className="mb-2">{t('manage.question.selectquiz')} :</label>
                     <Select
                         defaultValue={selectedQuiz}
                         onChange={setSelectedQuiz}
@@ -272,7 +275,7 @@ const QuizQA = (props) => {
                 </div>
 
                 <div className="mt-3 mb-2">
-                    Add new question
+                    {t('manage.question.addnew')}
                 </div>
                 {questions && questions.length > 0
                     && questions.map((question, index) => {
@@ -280,12 +283,12 @@ const QuizQA = (props) => {
                             <div key={question.id} className="q-main mb-4">
                                 <div className="question-content">
                                     <FloatingLabel
-                                        label={`Question ${index + 1} 's Description`}
+                                        label={`${t('manage.question.question')} ${index + 1}`}
                                         className="mb-3 description"
                                     >
                                         <Form.Control
                                             value={question.description}
-                                            placeholder="Description"
+                                            placeholder={t('manage.question.description')}
                                             onChange={(event) => handleOnChange('QUESTION', question.id, event.target.value)}
                                         />
                                     </FloatingLabel>
@@ -303,7 +306,7 @@ const QuizQA = (props) => {
                                                 <span
                                                     onClick={() => handlePreviewImage(question.id)}>{question.imageName}</span>
                                                 :
-                                                '0 file is uploaded'}
+                                                <>{t('manage.question.upload')}</>}
                                         </span>
 
                                     </div>
@@ -333,13 +336,13 @@ const QuizQA = (props) => {
                                                 />
 
                                                 <FloatingLabel
-                                                    label={`Answer ${index + 1}`}
+                                                    label={`${t('manage.question.answer')} ${index + 1}`}
                                                     className="answer-name"
                                                 >
                                                     <Form.Control
                                                         value={answer.description}
                                                         onChange={(event) => handleAnswerQuestion('INPUT', answer.id, question.id, event.target.value)}
-                                                        placeholder="Answer" />
+                                                        placeholder={t('manage.question.answer')} />
                                                 </FloatingLabel>
                                                 <div className="btn-group">
                                                     {/* 2 vong lap => answer phu thuoc vao id cua question */}
@@ -366,7 +369,7 @@ const QuizQA = (props) => {
                         <button
                             onClick={() => handleSubmitQuestionForQuiz()}
                             className='btn btn-warning'
-                        >Save Questions</button>
+                        >{t('manage.question.save')}</button>
                     </div>
                 }
                 {

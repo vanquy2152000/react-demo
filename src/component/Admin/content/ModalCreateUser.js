@@ -7,10 +7,12 @@ import Row from 'react-bootstrap/Row';
 import { FcPlus } from "react-icons/fc";
 import { toast } from 'react-toastify';
 import { postCreateNewUser } from '../../../services/apiServices';
+import { useTranslation } from 'react-i18next';
 
 
 const ModalCreateUser = (props) => {
     const { show, setShow } = props;
+    const { t } = useTranslation();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -87,13 +89,13 @@ const ModalCreateUser = (props) => {
                 className="modal-add-user"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Add New User</Modal.Title>
+                    <Modal.Title>{t('modal.title')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Email</Form.Label>
+                                <Form.Label>{t('modal.email')}</Form.Label>
                                 <Form.Control
                                     type="email"
                                     placeholder="Enter Email"
@@ -103,7 +105,7 @@ const ModalCreateUser = (props) => {
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPassword">
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>{t('modal.password')}</Form.Label>
                                 <Form.Control
                                     type="password"
                                     placeholder="Password"
@@ -115,7 +117,7 @@ const ModalCreateUser = (props) => {
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridCity">
-                                <Form.Label>User Name</Form.Label>
+                                <Form.Label>{t('modal.username')}</Form.Label>
                                 <Form.Control
                                     type="username"
                                     placeholder="Username"
@@ -125,7 +127,7 @@ const ModalCreateUser = (props) => {
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridState">
-                                <Form.Label>Role</Form.Label>
+                                <Form.Label>{t('modal.role')}</Form.Label>
                                 <Form.Select
                                     onChange={(event) => setRole(event.target.value)}
                                     value={role}
@@ -138,7 +140,7 @@ const ModalCreateUser = (props) => {
                             <Form.Group className="position-relative mb-3">
                                 <Form.Label className="label-upload" htmlFor="labelUpload">
                                     <FcPlus />
-                                    Upload File Image
+                                    {t('modal.upload')}
                                 </Form.Label>
                                 <Form.Control
                                     type="file"
@@ -153,7 +155,7 @@ const ModalCreateUser = (props) => {
                                 {previewImage ?
                                     <img src={previewImage} alt="" />
                                     :
-                                    <span>Preview img</span>
+                                    <span>{t('modal.img')}</span>
                                 }
                             </Form.Group>
                         </Row>
@@ -161,10 +163,10 @@ const ModalCreateUser = (props) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        {t('modal.close')}
                     </Button>
                     <Button variant="primary" onClick={() => handleCreateUser()}>
-                        Save
+                        {t('modal.save')}
                     </Button>
                 </Modal.Footer>
             </Modal>

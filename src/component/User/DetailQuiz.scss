@@ -31,10 +31,18 @@
             }
             .answer {
                 .a-child {
-                    // display: flex;
+                    display: flex;
                     // justify-content: center;
                     text-align: left;
                     padding-left: 50px;
+                    .correct {
+                        color: green;
+                        font-size: 25px;
+                    }
+                    .incorrect {
+                        color: red;
+                        font-size: 25px;
+                    }
                 }
             }
         }

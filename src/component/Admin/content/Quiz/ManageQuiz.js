@@ -1,4 +1,4 @@
-import { FloatingLabel, Form, Button, Accordion } from "react-bootstrap";
+import { FloatingLabel, Form, Button, Accordion, Tab, Tabs } from "react-bootstrap";
 import './ManageQuiz.scss';
 import Select from 'react-select';
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import TableQuiz from './TableQuiz'
 import QuizQA from './QuizQA';
 import AssignQuiz from './AssignQuiz';
+import { useTranslation } from 'react-i18next';
 
 const options = [
     { value: 'EASY', label: 'EASY' },
@@ -19,6 +20,8 @@ const ManageQuiz = (props) => {
     const [description, setDescription] = useState('');
     const [type, setType] = useState('');
     const [image, setImage] = useState(null);
+
+    const { t } = useTranslation();
 
     const handleChangeFile = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
@@ -55,80 +58,68 @@ const ManageQuiz = (props) => {
 
     return (
         <div className="quiz-container">
+            <Tabs
+                defaultActiveKey="quiz1"
+                id="uncontrolled-tab-example"
+                className="mb-3"
+            >
+                <Tab eventKey="quiz1" title={t('manage.quiz.title1')}>
+                    <div className="add-new">
+                        <fieldset className="border rounded-3 p-3">
+                            <legend className="float-none w-auto px-3">{t('manage.quiz.addnew')}</legend>
+                            <FloatingLabel label={t('manage.quiz.name')} className="mb-3">
+                                <Form.Control
+                                    type="text"
+                                    placeholder="your name quiz"
+                                    value={name}
+                                    onChange={(event) => setName(event.target.value)}
+                                />
+                            </FloatingLabel>
+                            <FloatingLabel label={t('manage.quiz.description')} className="mb-3">
+                                <Form.Control
+                                    type="text"
+                                    placeholder="description"
+                                    value={description}
+                                    onChange={(event) => setDescription(event.target.value)}
+                                />
+                            </FloatingLabel>
 
-            <Accordion defaultActiveKey="0">
-                <Accordion.Item eventKey="0">
-                    <Accordion.Header>Manage Quizzes</Accordion.Header>
-                    <Accordion.Body>
-                        <div className="add-new">
-                            <fieldset className="border rounded-3 p-3">
-                                <legend className="float-none w-auto px-3">Add New Quiz</legend>
-                                <FloatingLabel label="Name" className="mb-3">
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="your name quiz"
-                                        value={name}
-                                        onChange={(event) => setName(event.target.value)}
-                                    />
-                                </FloatingLabel>
-                                <FloatingLabel label="Description " className="mb-3">
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="description"
-                                        value={description}
-                                        onChange={(event) => setDescription(event.target.value)}
-                                    />
-                                </FloatingLabel>
 
+                            <Form.Group className="mb-3">
+                                <Select
+                                    defaultValue={type}
+                                    onChange={setType}
+                                    options={options}
+                                    placeholder={t('manage.quiz.quiztype')}
+                                />
+                            </Form.Group>
 
-                                <Form.Group className="mb-3">
-                                    <Select
-                                        defaultValue={type}
-                                        onChange={setType}
-                                        options={options}
-                                        placeholder="Quiz type...."
-                                    />
-                                </Form.Group>
-
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Upload Image</Form.Label>
-                                    <Form.Control
-                                        type="file"
-                                        placeholder="description"
-                                        onChange={(event) => handleChangeFile(event)}
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Button
-                                        onClick={() => handleSubmitQuiz()}
-                                        variant="warning">Save</Button>
-                                </Form.Group>
-                            </fieldset>
-                        </div>
-                        <div className="list-detail">
-                            <TableQuiz />
-                        </div>
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
-
-            <Accordion defaultActiveKey="1">
-                <Accordion.Item eventKey="1">
-                    <Accordion.Header>Update Q/A Quizzes</Accordion.Header>
-                    <Accordion.Body>
-                        <QuizQA />
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
-
-            <Accordion defaultActiveKey="2">
-                <Accordion.Item eventKey="2">
-                    <Accordion.Header>Assign to Users</Accordion.Header>
-                    <Accordion.Body>
-                        <AssignQuiz />
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
+                            <Form.Group className="mb-3">
+                                <Form.Label>{t('manage.quiz.img')}</Form.Label>
+                                <Form.Control
+                                    type="file"
+                                    placeholder="description"
+                                    onChange={(event) => handleChangeFile(event)}
+                                />
+                            </Form.Group>
+                            <Form.Group>
+                                <Button
+                                    onClick={() => handleSubmitQuiz()}
+                                    variant="warning">{t('manage.quiz.save')}</Button>
+                            </Form.Group>
+                        </fieldset>
+                    </div>
+                    <div className="list-detail">
+                        <TableQuiz />
+                    </div>
+                </Tab>
+                <Tab eventKey="quiz2" title={t('manage.quiz.title2')}>
+                    <QuizQA />
+                </Tab>
+                <Tab eventKey="quiz3" title={t('manage.quiz.title3')}>
+                    <AssignQuiz />
+                </Tab>
+            </Tabs>
 
         </div >
     )

@@ -9,6 +9,10 @@ import { toast } from 'react-toastify';
 import { doLogOut } from '../../redux/action/userAction';
 import Language from './Language';
 import { useTranslation } from 'react-i18next';
+import { DiReact } from "react-icons/di";
+import './Header.scss';
+import Profile from './Profile';
+import { useState } from 'react';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -17,12 +21,18 @@ const Header = () => {
     const account = useSelector(state => state.user.account);
     const { t, i18n } = useTranslation();
 
+    const [showModalProfile, setShowModalProfile] = useState(false);
+
     const handleLogin = () => {
         navigate("/login");
     }
 
     const handleRegister = () => {
         navigate("/register");
+    }
+
+    const handleProfile = () => {
+        setShowModalProfile(true);
     }
 
     const handleLogOut = async () => {
@@ -37,47 +47,54 @@ const Header = () => {
         }
 
     }
-    console.log("check : ", i18n.language)
-
     return (
-        <Navbar bg="light" expand="lg">
-            <Container>
-                <NavLink to="/" className="navbar-brand">Tobi</NavLink>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <NavLink to="/" className="nav-link">{t('header.home')}</NavLink>
-                        <NavLink to="/admins" className="nav-link">{t('header.admin')}</NavLink>
-                        <NavLink to="/users" className="nav-link">{t('header.user')}</NavLink>
-                    </Nav>
-                    <Nav>
-                        {
-                            isAuthenticated === false ?
-                                <>
-                                    <button
-                                        className="btn-login"
-                                        onClick={() => handleLogin()}
-                                    >
-                                        {t('header.login')}
-                                    </button>
-                                    <button
-                                        className="btn-signup"
-                                        onClick={() => handleRegister()}
-                                    >
-                                        {t('header.signup')}
-                                    </button>
-                                </>
-                                :
-                                <NavDropdown title={i18n.language === "vi" ? "Cài Đặt" : "Setting"} id="basic-nav-dropdown">
-                                    <NavDropdown.Item>{t('header.setting.profile')}</NavDropdown.Item>
-                                    <NavDropdown.Item onClick={() => handleLogOut()}>{t('header.setting.logout')}</NavDropdown.Item>
-                                </NavDropdown>
-                        }
-                        <Language />
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <>
+            <Navbar bg="light" expand="lg">
+                <Container>
+                    <NavLink to="/" className="navbar-brand">
+                        <DiReact className="brand-icon" />
+                        Tobi
+                    </NavLink>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <NavLink to="/" className="nav-link">{t('header.home')}</NavLink>
+                            <NavLink to="/admins" className="nav-link">{t('header.admin')}</NavLink>
+                            <NavLink to="/users" className="nav-link">{t('header.user')}</NavLink>
+                        </Nav>
+                        <Nav>
+                            {
+                                isAuthenticated === false ?
+                                    <>
+                                        <button
+                                            className="btn-login"
+                                            onClick={() => handleLogin()}
+                                        >
+                                            {t('header.login')}
+                                        </button>
+                                        <button
+                                            className="btn-signup"
+                                            onClick={() => handleRegister()}
+                                        >
+                                            {t('header.signup')}
+                                        </button>
+                                    </>
+                                    :
+                                    <NavDropdown title={i18n.language === "vi" ? "Cài Đặt" : "Setting"} id="basic-nav-dropdown">
+                                        <NavDropdown.Item onClick={() => handleProfile()}>{t('header.setting.profile')}</NavDropdown.Item>
+                                        <NavDropdown.Item onClick={() => handleLogOut()}>{t('header.setting.logout')}</NavDropdown.Item>
+                                    </NavDropdown>
+                            }
+                            <Language />
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+            <Profile
+                show={showModalProfile}
+                setShow={setShowModalProfile}
+            />
+        </>
     );
 }
 

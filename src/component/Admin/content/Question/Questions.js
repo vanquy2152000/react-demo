@@ -10,6 +10,7 @@ import _ from 'lodash';
 import Lightbox from "react-awesome-lightbox";
 import { getAllQuizForAdmin, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion } from "../../../../services/apiServices";
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 const Questions = (props) => {
     const initQuestions = [
@@ -37,6 +38,8 @@ const Questions = (props) => {
 
     const [listQuiz, setListQuiz] = useState([]);
     const [selectedQuiz, setSelectedQuiz] = useState({});
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         fetchQuiz();
@@ -222,12 +225,12 @@ const Questions = (props) => {
     return (
         <div className="question-container">
             <div className="title">
-                manage questions
+                {t('manage.question.title')}
             </div>
             <hr />
             <div className="add-new-question">
                 <div className="col-6">
-                    <label className="mb-2">Select Quiz :</label>
+                    <label className="mb-2">{t('manage.question.selectquiz')} :</label>
                     <Select
                         defaultValue={selectedQuiz}
                         onChange={setSelectedQuiz}
@@ -236,7 +239,7 @@ const Questions = (props) => {
                 </div>
 
                 <div className="mt-3 mb-2">
-                    Add new question
+                    {t('manage.question.addnew')}
                 </div>
                 {questions && questions.length > 0
                     && questions.map((question, index) => {
@@ -244,7 +247,7 @@ const Questions = (props) => {
                             <div key={question.id} className="q-main mb-4">
                                 <div className="question-content">
                                     <FloatingLabel
-                                        label={`Question ${index + 1} 's Description`}
+                                        label={`${t('manage.question.question')} ${index + 1}`}
                                         className="mb-3 description"
                                     >
                                         <Form.Control
@@ -267,7 +270,7 @@ const Questions = (props) => {
                                                 <span
                                                     onClick={() => handlePreviewImage(question.id)}>{question.imageName}</span>
                                                 :
-                                                '0 file is uploaded'}
+                                                <>{t('manage.question.upload')}</>}
                                         </span>
 
                                     </div>
@@ -297,7 +300,7 @@ const Questions = (props) => {
                                                 />
 
                                                 <FloatingLabel
-                                                    label={`Answer ${index + 1}`}
+                                                    label={`${t('manage.question.answer')} ${index + 1}`}
                                                     className="answer-name"
                                                 >
                                                     <Form.Control
@@ -330,7 +333,7 @@ const Questions = (props) => {
                         <button
                             onClick={() => handleSubmitQuestionForQuiz()}
                             className='btn btn-warning'
-                        >Save Questions</button>
+                        >{t('manage.question.save')}</button>
                     </div>
                 }
                 {

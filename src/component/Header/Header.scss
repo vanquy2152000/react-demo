@@ -1,0 +1,16 @@
+.navbar-brand {
+    .brand-icon {
+      font-size: 25px;
+      color: #00bfff;
+      animation: spin 5s infinite linear;
+    }
+
+    @keyframes spin {
+      from {
+        transform: scale(1) rotate(0deg);
+      }
+      to {
+        transform: scale(1) rotate(360deg);
+      }
+    }
+  }

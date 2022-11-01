@@ -1,5 +1,32 @@
+$card-width: 18rem;
+$border-radius: 7px;
+
 .list-quiz-container {
     display: flex;
     gap: 50px;
     flex-wrap: wrap;
+    .list-card {
+        width: 18rem;
+        background: #fff;
+        width: fit-content;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: 0.2s ease;
+        &:hover {
+            box-shadow: 0 10px 20px 1px gray;
+            transform: scale(1.03);
+        }
+        .card-img {
+            width: 100%;
+            height: 14vw;
+            object-fit: cover;
+        }
+        .card-body {
+            width: $card-width;
+            padding: 10px 3px;
+            .title {
+                margin-left: 10px;
+            }
+        }
+    }
 }

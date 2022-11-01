@@ -8,6 +8,7 @@ import { FcPlus } from "react-icons/fc";
 import { toast } from 'react-toastify';
 import { putUpdateUser } from '../../../services/apiServices';
 import _ from "lodash";
+import { useTranslation } from 'react-i18next';
 
 const ModalUpdateUser = (props) => {
     const { show, setShow, dataUpdate } = props;
@@ -18,6 +19,9 @@ const ModalUpdateUser = (props) => {
     const [role, setRole] = useState("USER");
     const [image, setImage] = useState("");
     const [previewImage, setPreviewImage] = useState("");
+
+    const { t } = useTranslation();
+
 
     useEffect(() => {
         if (!_.isEmpty(dataUpdate)) {
@@ -96,13 +100,13 @@ const ModalUpdateUser = (props) => {
                 className="modal-add-user"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Update A User</Modal.Title>
+                    <Modal.Title>{t('manage.update.title')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Email</Form.Label>
+                                <Form.Label>{t('manage.update.email')}</Form.Label>
                                 <Form.Control
                                     type="email"
                                     placeholder="Enter Email"
@@ -113,7 +117,7 @@ const ModalUpdateUser = (props) => {
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPassword">
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>{t('manage.update.password')}</Form.Label>
                                 <Form.Control
                                     type="password"
                                     placeholder="****************"
@@ -126,7 +130,7 @@ const ModalUpdateUser = (props) => {
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridCity">
-                                <Form.Label>User Name</Form.Label>
+                                <Form.Label>{t('manage.update.username')}</Form.Label>
                                 <Form.Control
                                     type="username"
                                     placeholder="Username"
@@ -136,7 +140,7 @@ const ModalUpdateUser = (props) => {
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridState">
-                                <Form.Label>Role</Form.Label>
+                                <Form.Label>{t('manage.update.role')}</Form.Label>
                                 <Form.Select
                                     onChange={(event) => setRole(event.target.value)}
                                     value={role}
@@ -149,7 +153,7 @@ const ModalUpdateUser = (props) => {
                             <Form.Group className="position-relative mb-3">
                                 <Form.Label className="label-upload" htmlFor="labelUpload">
                                     <FcPlus />
-                                    Upload File Image
+                                    {t('manage.update.upload')}
                                 </Form.Label>
                                 <Form.Control
                                     type="file"
@@ -164,7 +168,7 @@ const ModalUpdateUser = (props) => {
                                 {previewImage ?
                                     <img src={previewImage} alt="" />
                                     :
-                                    <span>Preview img</span>
+                                    <span>{t('manage.update.img')}</span>
                                 }
                             </Form.Group>
                         </Row>
@@ -172,10 +176,10 @@ const ModalUpdateUser = (props) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        {t('manage.update.close')}
                     </Button>
                     <Button variant="primary" onClick={() => handleUpdateUser()}>
-                        Save
+                        {t('manage.update.save')}
                     </Button>
                 </Modal.Footer>
             </Modal>
